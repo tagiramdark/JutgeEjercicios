@@ -1,21 +1,25 @@
+#include <cmath>
 #include <iostream>
-#include <string>
 using namespace std;
 bool is_perfect(int n);
-int main() {
+int main()
+{
 	int n;
 	cin >> n;
 	cout << is_perfect(n) << endl;
 }
 bool is_perfect(int n) {
-	int sum = 0,i=1;
-	if (n==0)
-		return false;
-	while(i<n){
-		if (n % i==0) {
-			sum += i;
+	int sum = 0;
+
+	for (int i = 1; i <= (sqrt(n)); i++) {
+		if (n % i == 0 && i != n) {			
+				sum += i;
+				if (i != (n / i) && (n / i) != n) {
+					sum += (n / i);
+				}
+			
 		}
-		++i;
 	}
-	return n == sum;
+	
+	return (n != 0 && sum == n);
 }
